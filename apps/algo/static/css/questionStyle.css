@@ -1,0 +1,122 @@
+body{
+  margin: 0px auto;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: Bold;
+}
+
+.contentContainer{
+  width: 90%;
+  margin: 200px auto 0px auto;
+}
+
+.questionContainer{
+  width: 35%;
+  padding: 20px;
+  background-color: Darkgray;
+  color: white;
+  margin: 0px auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.questionStatement{
+  padding-top: 4px;
+  background-color: Dimgray;
+  color: white;
+  margin: 0px auto;
+}
+
+.questionTextContainer{
+  width: 100%;
+  height: 200px;
+  text-align: left;
+  padding:3px;
+}
+
+.questionText:hover{
+  cursor: pointer;
+}
+
+.algoConsole{
+  display: none;
+}
+
+.questionHintButton{
+  padding: 3px;
+  cursor: crosshair;
+  background-color: crimson;
+  color: white;
+  display: none;
+  /*margin: 0px auto;*/
+}
+
+.questionSolutionButtonOne{
+  padding: 3px;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  /*margin: 0px auto;*/
+}
+
+.questionSolutionButtonTwo{
+  padding: 3px;
+  cursor: crosshair;
+  background-color: Darkblue;
+  color: white;
+  /*margin: 0px auto;*/
+}
+
+.questionExplanationButton{
+  padding: 3px;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  /*margin: 0px auto;*/
+}
+
+.questionHint{
+  padding-top: 4px;
+  height: 80px;
+  background-color: goldenrod;
+  color: white;
+  margin: 0px;
+  display: none;
+}
+
+.questionSolutionOne{
+  padding-top: 4px;
+  height: 80px;
+  background-color: goldenrod;
+  color: white;
+  margin: 0px;
+  display: none;
+}
+
+.questionSolutionTwo{
+  padding-top: 4px;
+  height: 80px;
+  background-color: goldenrod;
+  color: white;
+  margin: 0px;
+  display: none;
+}
+
+.questionExplanation{
+  padding-top: 4px;
+  height: 80px;
+  background-color: goldenrod;
+  color: white;
+  margin: 0px;
+  display: none;
+}
+
+.userInputSubmit{
+  width:152px;
+  margin:3px;
+  margin-bottom: 10px;
+  padding: 4px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+}

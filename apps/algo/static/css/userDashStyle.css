@@ -1,0 +1,148 @@
+body{
+  background-color: black;
+  font-family: 'Inconsolata' , sans-serif;
+  height: 800px;
+  /*outline: 1px dotted white;*/
+}
+/*******************************AlgoApp User Dash Page Begin*/
+
+.aa_userDashPageSideBar{
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  /*outline: 1px solid yellow;*/
+  padding: 0px;
+  margin: 0px;
+}
+
+.aa_logo{
+  width:100%;
+  height: 20%;
+  background-image: url(../images/aa_landing_6Brs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border-bottom: 1px solid white;
+  /*outline: 1px solid white;*/
+}
+
+.userConsole{
+  /*padding-left: 20px;*/
+}
+
+.visitorAvatar{
+  width:100%;
+  height: 350px;
+  background-image: url(../images/aa_avatar_visitor_rs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  border-bottom: 1px dotted white;
+  /*outline: 1px solid white;*/
+}
+
+.memberAvatar{
+  width:100%;
+  height: 350px;
+  background-image: url(../images/aa_avatar_member_rs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  border-bottom: 1px dotted white;
+  /*outline: 1px solid white;*/
+}
+
+.adminAvatar{
+  width:100%;
+  height: 350px;
+  background-image: url(../images/aa_avatar_admin_rs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  border-bottom: 1px dotted white;
+  /*outline: 1px solid white;*/
+}
+
+.userAttribute{
+
+}
+
+.userProfileConsole{
+  padding-top: 0%;
+  padding-left: 1%;
+  width: 75%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  color:white;
+}
+.navBar{
+  /*display: inline-block;*/
+  vertical-align: top;
+  width: 90%;
+  height: 20%;
+  /*outline: 1px solid green;*/
+}
+
+.navBar a{
+  text-decoration: none;
+  color:white;
+  font-size: 22px;
+}
+
+.navBar a:hover{
+  color:Darkviolet;
+  border-bottom: 4px solid Darkviolet;
+}
+
+.navLinks{
+  position: relative;
+  top: 85%;
+  left:51%;
+}
+
+.visitorAvatarDark{
+  width:100%;
+  height: 600px;
+  background-image: url(../images/aa_avatar_visitor_dark.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 40% auto;
+  /*border-bottom: 1px dotted white;*/
+  /*outline: 1px solid white;*/
+}
+
+.memberAvatarDark{
+  width:100%;
+  height: 600px;
+  background-image: url(../images/aa_avatar_member_dark.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 40% auto;
+  /*border-bottom: 1px dotted white;*/
+  /*outline: 1px solid white;*/
+}
+
+.adminAvatarDark{
+  width:100%;
+  height: 600px;
+  background-image: url(../images/aa_avatar_admin_dark.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 40% auto;
+  /*border-bottom: 1px dotted white;*/
+  /*outline: 1px solid white;*/
+}
+
+
+/*******************************AlgoApp User Dash Page End*/
+/***/
+/***/
+/***/
+/*******************************AlgoApp Admin Page Begin*/
+
+
+
+/*******************************AlgoApp Admin Page End*/

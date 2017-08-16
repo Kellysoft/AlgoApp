@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algo App Main Page</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>
+  <body>
+    <div class="scrollbar" id="style-default">
+      <div class="force-overflow"></div>
+    </div>
+    <div class="aa_mainPageSideBar">
+      <div class="aa_logo"></div>
+      <div class="userConsole">
+        <div class="userInformation">
+          {% if not request.session.username %}
+            <div class="visitorAvatar"></div>
+          {% elif request.session.userid == 1 or request.session.userid == 2 %}
+            <div class="adminAvatar"></div>
+          {% else %}
+            <div class="memberAvatar"></div>
+          {% endif %}
+          {% if request.session.username %}
+          <p class="challengerTitle">Challenger: {{request.session.username}}</h1>
+          {% else %}
+          <p class="challengerTitle">Challenger: Visitor</h1>
+          {% endif %}
+          <p class="scoreTitle">SCORE:</p>
+          {% if not request.session.username %}
+          	<a class="loginPageLink" href="/loginPage"> You must login to keep score.</a>
+          {% else %}
+            <p class="scoreValue">{{ request.session.points }}</p>
+          {% endif %}
+          <p class="levelTitle">Level-01</p>
+        </div>
+      </div>
+    </div>
+    {% for algo in algos %}
+    <div class="aa_questionContainer">
+      <div class="navBar">
+        <div class="navLinks">
+          <!-- <a href="/loginPage">Home</a> | -->
+          {% if request.session.username %}
+          {% if request.session.userid == 1 or request.session.userid == 2  %}
+          <a href="/show_users">AdminDash</a> |
+          {% endif %}
+          <a href="/user/{{request.session.userid}}">UserDash</a>  |
+          {% if request.session.username %}
+          <a href="/level_two">Algos-Level 2</a> |
+          {% endif %}
+          <a href="/logout">Logout</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="pagination">
+        <span class="step-links">
+          {% if algos.has_previous %}
+            <a href="?page={{ algos.previous_page_number }}">previous</a>
+          {% endif %}
+          <span class="current">
+            Page {{ algos.number }} of {{ algos.paginator.num_pages }}.
+          </span>
+          {% if algos.has_next %}
+            <a href="?page={{ algos.next_page_number }}">next</a>
+          {% endif %}
+        </span>
+      </div>
+      <div class="questionStatement">
+        <div class="algo">
+          <div class="questionTextContainer">
+            <p class="algoTitle">Algo Question #{{algos.number}}:</p>
+            <p class="questionAttributeLabel">Question Statement:</p>
+            <p class="questionText">{{ algo.question|upper}}</p>
+            <p class="questionAttributeLabel">Question Parameters:</p>
+      			<p class="questionText">{{ algo.params|upper}}</p>
+          </div>
+          <form action="/submit_answer/{{request.session.userid}}/{{algos.number}}" method="POST">
+            {% csrf_token %}
+            <textarea class="answerInputField" name="solution" value="" rows="5" cols="100" placeholder="Enter your solution here.."></textarea>
+            <button type="submit" name="button" value="Submit Solution" class="userInputSubmit" id="answerSubmitButton">Submit Solution</button>
+            {% if messages %}
+      				{% for message in messages %}
+      				{{message}}
+      				{% endfor %}
+      			{% endif %}
+          </form>
+        </div>
+        <div class="algoConsole">
+          <p class="algoTitle">Algo Console...</p>
+          <div class="algoConsoleFeatures">
+            <div class="questionNfoButton consoleButton">
+              <p class="buttonName">Algo Question Information...</p>
+              <div class="questionNfo">
+                <p class="questionNfoDate">Date Added: {{ algo.created_at}}</p>
+                <p class="questionNfoDifficulty">Difficulty Level: {{ algo.level}}</p>
+                <p class="questionNfoPoints">Point Value: {{ algo.points}}</p>
+              </div>
+            </div>
+            <div class="questionHintButton consoleButton">
+              <p class="buttonName">Hint</p>
+              <p class="questionHint">{{ algo.hint|upper}}</p>
+            </div>
+            {% if request.session.username %}
+              <div class="questionSolutionButtonOne consoleButton">
+                <p class="buttonName">Solution 1</p>
+                <p class="questionSolutionOne">{{ algo.solution|upper}}</p>
+              </div>
+              <div class="questionSolutionButtonTwo consoleButton">
+                <p class="buttonName">Solution 2</p>
+                <p class="questionSolutionTwo">{{ algo.second_solution|upper}}</p>
+              </div>
+              <div class="questionExplanationButton consoleButton">
+                <p class="buttonName">Solution Explanation...</p>
+                <p class="questionExplanation">{{ algo.explanation|upper}}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <span class="step-links">
+          {% if algos.has_previous %}
+            <a href="?page={{ algos.previous_page_number }}">previous</a>
+          {% endif %}
+          <span class="current">
+            Page {{ algos.number }} of {{ algos.paginator.num_pages }}.
+          </span>
+          {% if algos.has_next %}
+            <a href="?page={{ algos.next_page_number }}">next</a>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type ="text/javascript" src="../static/js/questionJQController.js"></script>
+  </body>
+</html>

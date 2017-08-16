@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algo App Landing ProtoType</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>
+  <body>
+    <div class="parallax_window">
+      <div id="aa_parallax_port">
+        <div class="layer" data-depth="0.00"><img src="../static/images/aa_landing_1.png" alt="code Layer 1" id="code_layer_1"></div>
+        <div class="layer" data-depth="0.025"><img src="../static/images/aa_landing_2.png" alt="code Layer 2" id="code_layer_2"></div>
+        <div class="layer" data-depth="0.05"><img src="../static/images/aa_landing_3.png" alt="code Layer 3" id="code_layer_3"></div>
+        <div class="layer" data-depth="0.05"><img src="../static/images/aa_landing_4.png" alt="code Layer 4" id="code_layer_4"></div>
+        <div class="layer" data-depth="0.20"><img src="../static/images/aa_landing_5.png" alt="code Layer 5" id="code_layer_5"></div>
+        <div class="layer" data-depth="0.25"><img src="../static/images/aa_landing_6.png" alt="code Layer 6" id="code_layer_6"></div>
+        <div class="layer" data-depth="0.30"><img src="../static/images/aa_landing_7.png" alt="code Layer 7" id="code_layer_7"></div>
+      </div>
+    </div>
+    <div class="landingPageNav">
+      <div class="landingPageNavButton" id="loginButton">
+        <h1 class="landingPageNavButtonTitle">Login</h1>
+      </div>
+      <div class="landingPageNavButton" id="mainPagebutton">
+        <a href="/" id="mainPageLink">
+        <h1 class="landingPageNavButtonTitle">Enter Without Login</h1>
+        </a>
+      </div>
+      <div class="landingPageNavButton" id="registrationButton">
+        <h1 class="landingPageNavButtonTitle">Register</h1>
+      </div>
+    </div>
+    <div class="formPanel" id="loginForm">
+      <h2 class="formTitle">Login</h2>
+      <form class="" action="/login" method="post">
+        {% csrf_token %}
+        <div class="formElement">
+          <p>Email</p>
+          <input type="text" name="email" value="" placeholder="Enter email here...">
+        </div>
+        <div class="formElement">
+          <p>Password</p>
+          <input type="password" name="password" value="" placeholder="Enter password here...">
+        </div>
+        <button type="submit" name="button">Login</button>
+      </form>
+      {% if messages %}
+        {% for message in messages %}
+          <p class="{{message.tags}}">{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div id="registrationForm" class="formPanel">
+      <h2 class="formTitle">Registration</h2>
+      <form class="" action="/register" method="post">
+        {% csrf_token %}
+        <div class="formElement">
+          <p>Name</p>
+          <input type="text" name="name" value="" placeholder="Enter first name here...">
+        </div>
+        <div class="formElement">
+          <p>Email</p>
+          <input type="text" name="email" value="" placeholder="Enter email here...">
+        </div>
+        <div class="formElement">
+          <p>Username</p>
+          <input type="text" name="username" value="" placeholder="Enter username here...">
+        </div>
+        <div class="formElement">
+          <p>Password</p>
+          <input type="password" name="password" value="" placeholder="Enter password here...">
+        </div>
+        <div class="formElement">
+          <p>Confirm Password</p>
+          <input type="password" name="confirm" value="" placeholder="Confirm password here...">
+        </div>
+        <button type="submit" name="button">Register</button>
+      </form>
+      {% if messages %}
+        {% for message in messages %}
+          <p class="{{message.tags}}">{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <!-- <div class="sectionOne">
+      <div class="sectionOneBlock" id="sectionOneBlockA">
+        <p class="sectionText">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum."
+        </p>
+      </div>
+      <div class="sectionOneBlock" id="sectionOneBlockB">
+        <p class="sectionText">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum."
+        </p>
+      </div>
+      <div class="sectionOneBlock" id="sectionOneBlockC">
+        <p class="sectionText">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum."
+        </p>
+      </div>
+      <div class="sectionOneBlock" id="sectionOneBlockD">
+        <p class="sectionText">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum."
+        </p>
+      </div>
+      <div class="sectionOneBlock" id="sectionOneBlockE">
+        <p class="sectionText">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum."
+        </p>
+      </div> -->
+    </div>
+    <script type="text/javascript" src="../static/js/jquery-2.1.3.min.js"></script>
+    <script type ="text/javascript" src="../static/js/parallax.js"></script>
+    <script type ="text/javascript" src="../static/js/aa_landingPageController.js"></script>
+    <script type="text/javascript">
+      var scene = $('#aa_parallax_port').get(0)
+      var parallax = new Parallax(scene)
+    </script>
+  </body>
+</html>

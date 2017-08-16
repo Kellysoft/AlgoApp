@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algo App User Dash Page</title>
+    <link rel="stylesheet" href="../static/css/userDashStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>
+  <body>
+    <div class="aa_userDashPageSideBar">
+      <div class="aa_logo"></div>
+      <div class="userConsole">
+        {% if not request.session.username %}
+          <div class="visitorAvatar"></div>
+        {% elif request.session.userid == 1 or request.session.userid == 2 %}
+          <div class="adminAvatar"></div>
+        {% else %}
+          <div class="memberAvatar"></div>
+        {% endif %}
+        <div class="userInformation">
+          <h2 class="userSiteName">Profile User: {{show.username}}</h2>
+          <p class="userAttribute" id="userRealName">Name: {{show.name}}</p>
+          <p class="userAttribute" id="userEmail">Email: {{show.email}}</p>
+          <p class="userAttribute" id="userDonorStatus">Donor Status: {{show.donor}}</p>
+          <p class="userAttribute" id="userMemberStatus">Member Status: {{show.member}}</p>
+          <p class="userAttribute" id="userJoinDate">Joined: {{show.created_at}}</p>
+          <p class="userAttribute" id="userUpdatedAt">Updated: {{show.updated_at}}</p>
+          <p class="userAttribute" id="userPoints">Points Earned: {{show.point}}</p>
+          <!-- <p class="userAttribute" id="userAchievements">Achievements Earned: Achievements...</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="userProfileConsole">
+      <div class="navBar">
+        <div class="navLinks">
+          <!-- <a href="/loginPage">Home</a> | -->
+          {% if request.session.username %}
+          {% if request.session.userid == 1 or request.session.userid == 2  %}
+          <a href="/show_users">AdminDash</a> |
+          {% endif %}
+          <!-- <a href="/user/{{request.session.userid}}">UserDash</a>  | -->
+          <a href="/">Algos-Level 1</a> |
+          <a href="/level_two">Algos-Level 2</a> |
+          <a href="/logout">Logout</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="userProfileInformation">
+        {% if not request.session.username %}
+          <div class="visitorAvatarDark"></div>
+        {% elif request.session.userid == 1 or request.session.userid == 2 %}
+          <div class="adminAvatarDark"></div>
+        {% else %}
+          <div class="memberAvatarDark"></div>
+        {% endif %}
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type ="text/javascript" src="../static/js/questionJQController.js"></script>
+  </body>
+</html>

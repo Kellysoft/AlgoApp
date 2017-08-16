@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Beta Landing</title>
+	<link rel="stylesheet" href="../static/css/questionStyle.css">
+</head>
+<body>
+
+<h1> Score </h1>
+{% if not request.session.username %}
+	<a> You must sign in to keep score</a>
+{% else %}
+		<h1>{{ request.session.points }}</h1>
+{% endif %}
+
+{% if request.session.username %}
+<h1>Hello, {{request.session.username}}</h1>
+{% else %}
+<h1>Welcome to the Algo App</h1>
+{% endif %}
+
+{% if request.session.userid == 1 or request.session.userid == 2  %}
+<a href="/show_users">Admin Area.</a>
+{% endif %}
+<br>
+{% if request.session.userid == 1 or request.session.userid == 2  %}
+<a href="/level_two">Go to level 2</a>
+{% endif %}
+<br>
+{% if not request.session.username %}
+<a href="/loginPage">Login or Sign Up.</a>
+{% endif %}
+
+{% if request.session.username %}
+<a href="/logout">Logout</a>
+{% endif %}
+<br>
+{% if request.session.username %}
+<a href="/user/{{request.session.userid}}">User Dashboard</a>
+{% endif %}
+<br>
+<br>
+
+<hr>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if algos.has_previous %}
+            <a href="?page={{ algos.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ algos.number }} of {{ algos.paginator.num_pages }}.
+        </span>
+
+        {% if algos.has_next %}
+            <a href="?page={{ algos.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+<!-- **************************************** -->
+<!-- jQuery Question Module - BEGIN -->
+<!-- **************************************** -->
+
+{% if request.session.username %}
+{% for algo in algos %}
+<div class="questionContainer" id="questionOne">
+	<div class="questionStatement">
+		<div class="questionTextContainer">
+			<h2> Question #{{algos.number}}: </h2>
+			<p class="questionText">{{ algo.question|upper}}</p>
+			<p class="questionText">{{ algo.params|upper}}</p>
+		</div>
+		<form action="/submit_answer/{{request.session.userid}}/{{algos.number}}" method="POST">
+			{% csrf_token %}
+			<input class="answerInputField" type="text" name="solution" value="">
+			<input type="hidden" name="id" value="{{algos.number}}">
+			<button type="submit" name="button" value="Submit Solution" class="userInputSubmit">Submit Solution</button>
+			{% if messages %}
+				{% for message in messages %}
+				{{message}}
+				{% endfor %}
+			{% endif %}
+		</form>
+		<div class="questionHintButton">
+			<p>Hint</p>
+		</div>
+		<div class="questionHint">
+			<p>{{ algo.solution_hint|upper}}</p>
+		</div>
+		{% if request.session.username %}
+		<div class="algoConsole">
+			<div class="questionSolutionButtonOne">
+				<p>Solution 1</p>
+			</div>
+			<div class="questionSolutionOne">
+				<p>{{ algo.solution|upper}}</p>
+			</div>
+			<div class="questionSolutionButtonTwo">
+				<p>Solution 2</p>
+			</div>
+			<div class="questionSolutionTwo">
+				<p>{{ algo.second_solution|upper}}</p>
+			</div>
+			<div class="questionExplanationButton">
+				<p>Solution Explanation</p>
+			</div>
+			<div class="questionExplanation">
+				<p>{{ algo.solution_explanation|upper}}</p>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endfor %}
+{% endif %}
+
+
+{% if not request.session.username %}
+{% for algo in algos %}
+<div class="questionContainer" id="questionOne">
+	<div class="questionStatement">
+		<div class="questionTextContainer">
+			<h2> Question #{{algos.number}}: </h2>
+			<p class="questionText">{{ algo.question|upper}}</p>
+			<p class="questionText">{{ algo.params|upper}}</p>
+		</div>
+		<form action="/submit_answer/{{algos.number}}" method="POST">
+			{% csrf_token %}
+			<input class="answerInputField" type="text" name="solution" value="">
+			<input type="hidden" name="id" value="{{algos.number}}">
+			<button type="submit" name="button" value="Submit Solution" class="userInputSubmit">Submit Solution</button>
+			{% if messages %}
+				{% for message in messages %}
+				{{message}}
+				{% endfor %}
+			{% endif %}
+		</form>
+		<div class="questionHintButton">
+			<p>Hint</p>
+		</div>
+		<div class="questionHint">
+			<p>{{ algo.solution_hint|upper}}</p>
+		</div>
+		<div class="algoConsole">
+			<div class="questionSolutionButtonOne">
+				<p>Solution 1</p>
+			</div>
+			<div class="questionSolutionOne">
+				<p>{{ algo.solution|upper}}</p>
+			</div>
+			<div class="questionSolutionButtonTwo">
+				<p>Solution 2</p>
+			</div>
+			<div class="questionSolutionTwo">
+				<p>{{ algo.second_solution|upper}}</p>
+			</div>
+			<div class="questionExplanationButton">
+				<p>Solution Explanation</p>
+			</div>
+			<div class="questionExplanation">
+				<p>{{ algo.solution_explanation|upper}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endif %}
+
+<!-- **************************************** -->
+<!-- jQuery Question Module - END -->
+<!-- **************************************** -->
+
+<!-- <div>
+{% if request.session.username %}
+ <h2> Problem 1 </h2>
+ <h3> What is var a + var b? </h3>
+ <h4> var a = 5 <br> var b = 10 </h4>
+ <form action="/submit_answer/{{request.session.userid}}" method="POST">
+			{% csrf_token %}
+			<p>Your Solution <input type="text" name="solution" value="" ></p>
+			<input type="hidden" name="id" value="1">
+
+			<p><input type="submit" name="button" value="Submit Solution"></p>
+		{% if messages %}
+      	{% for message in messages %}
+      	{{message}}
+      	{% endfor %}
+   		{% endif %}
+   		</form>
+{% endif %}
+</div> -->
+
+
+<hr>
+
+<!-- <div>
+
+<hr>
+<div>
+
+{% if request.session.username %}
+ <h2> Problem 2 </h2>
+ <h3> What is var a + var b? </h3>
+ <h4> var a = 5 <br> var b = 10 </h4>
+ <form action="/submit_answer/{{request.session.userid}}" method="POST">
+			{% csrf_token %}
+			<p>Your Solution <input type="text" name="solution" value="" ></p>
+			<input type="hidden" name="id" value="2">
+			<p><input type="submit" name="button" value="Submit Solution"></p>
+		{% if messages %}
+      	{% for message in messages %}
+      	{{message}}
+      	{% endfor %}
+   		{% endif %}
+   		</form>
+{% endif %}
+</div>
+
+
+<hr>
+ -->
+<!-- <div>
+{% if request.session.username %}
+ <h2> Problem 3 </h2>
+ <h3> What is var a + var b? </h3>
+ <h4> var a = 5 <br> var b = 10 </h4>
+ <form action="/submit_answer/{{request.session.userid}}" method="POST">
+			{% csrf_token %}
+			<p>Your Solution <input type="text" name="solution" value="" ></p>
+			<input type="hidden" name="id" value="3">
+			<p><input type="submit" name="button" value="Submit Solution"></p>
+		{% if messages %}
+      	{% for message in messages %}
+      	{{message}}
+      	{% endfor %}
+   		{% endif %}
+   		</form>
+{% endif %}
+</div> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type ="text/javascript" src="../static/js/questionJQController.js"></script>
+</body>
+</html>

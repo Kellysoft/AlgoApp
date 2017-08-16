@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algo App User Dash Page</title>
+    <link rel="stylesheet" href="../static/css/adminDashStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>
+  <body>
+    <div class="aa_adminDashPageSideBar">
+      <div class="aa_logo"></div>
+      <div class="userConsole">
+        <div class="userInformation">
+          {% if not request.session.username %}
+            <div class="visitorAvatar"></div>
+            <p class="visitorTitle">Admin: {{request.session.username}}</p>
+            <p class="adminDashNote">This is a restricted area.</p>
+          {% elif request.session.userid == 1 or request.session.userid == 2 %}
+            <div class="adminAvatar"></div>
+            <p class="adminTitle">Admin: {{request.session.username}}</p>
+          {% else %}
+            <div class="memberAvatar"></div>
+            <p class="memberTitle">Member: {{request.session.username}}</p>
+            <p class="adminDashNote">This is a restricted area.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="adminNfoConsole">
+      <div class="navBar">
+        <div class="navLinks">
+          <a href="/loginPage">Home</a> |
+          {% if request.session.username %}
+          {% if request.session.userid == 1 or request.session.userid == 2  %}
+          <a href="/show_users">AdminDash</a> |
+          {% endif %}
+          <a href="/user/{{request.session.userid}}">UserDash</a>  |
+          <a href="/">Algos-Level 1</a> |
+          <a href="/level_two">Algos-Level 2</a> |
+          <a href="/logout">Logout</a>
+          {% endif %}
+        </div>
+      </div>
+      {% if request.session.username %}
+        {% if request.session.userid == 1 or request.session.userid == 2  %}
+          <div class="tablePanel" id="usersTable">
+            <p>Site Users</p>
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Points Earned</th>
+                <th>Donor Status</th>
+                <th>Member Status</th>
+                <th>User Account Created</th>
+                <th>User Account Updated</th>
+                <th>User ID</th>
+              </tr>
+              <!-- {% for stuff in show_users %} -->
+              <tr>
+                <td>{{stuff.name}}</td>
+                <td>{{stuff.email}}</td>
+                <td>{{stuff.username}}</td>
+                <td>{{stuff.point}}</td>
+                <td>{{stuff.donor}}</td>
+                <td>{{stuff.member}}</td>
+                <td>{{stuff.created_at}}</td>
+                <td>{{stuff.updated_at}}</td>
+                <td>{{stuff.id}}</td>
+              </tr>
+              <!-- {% endfor %} -->
+            </table>
+          </div>
+          <div class="tablePanel" class="algosTable">
+            <p>Algos Table </p>
+            <table>
+              <tr>
+                <th>Question </th>
+                <th>Solution</th>
+                <th>Solution Hint</th>
+                <th>Second Solution</th>
+                <th>Solution Explanation</th>
+                <th>Parameters</th>
+                <th>D-Level</th>
+                <th>Point Value</th>
+                <th>Question ID</th>
+              </tr>
+              <!-- {% for info in show_algos %} -->
+              <tr>
+                <td>{{info.question}}</td>
+                <td>{{info.solution}}</td>
+                <td>{{info.hint}}</td>
+                <td>{{info.second_solution}}</td>
+                <td>{{info.explanation}}</td>
+                <td>{{info.params}}</td>
+                <td>{{info.level}}</td>
+                <td>{{info.points}}</td>
+                <td>{{info.id}}</td>
+              </tr>
+              <!-- {% endfor %} -->
+            </table>
+          </div>
+          <div class="tablePanel" id="userAlgosTable">
+            <p>User Algos Table</p>
+            <table>
+              <tr>
+                <th>User ID </th>
+                <th>User Name </th>
+                <th>Algo ID</th>
+                <th>User Fails</th>
+                <th>Solved?</th>
+                <th>UserAlgo ID</th>
+              </tr>
+              <!-- {% for join in show_joins %} -->
+              <tr>
+                <td>{{join.userJoin.id}}</td>
+                <td>{{join.userJoin.name}}</td>
+                <td>{{join.algo_id.id}}</td>
+                <td>{{join.fails}}</td>
+                <td>{{join.solved}}</td>
+                <td>{{join.id}}</td>
+              </tr>
+              <!-- {% endfor %} -->
+            </table>
+          </div>
+          <div class="formPanel2" id="algoCreationForm">
+            <p>Algo Creation Form</p>
+            <form action="/submit_algo" method="POST">
+              {% csrf_token %}
+              <div class="formElement">
+                <p>Question:</p>
+                <textarea type="text" name="question" rows="4" cols="40" placeholder="Enter question here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Solution:</p>
+                <textarea type="text" name="solution" rows="4" cols="40" placeholder="Enter 1st solution here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Second Solution:</p>
+                <textarea type="text" name="second_solution" rows="4" cols="40" placeholder="Enter 2nd solution here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Solution Hint:</p>
+                <textarea type="text" name="hint" rows="4" cols="40" placeholder="Enter hint here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Solution Explanation:</p>
+                <textarea type="text" name="explanation" rows="4" cols="40" placeholder="Enter explanation here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Parameters:</p>
+                <textarea type="text" name="params" rows="4" cols="40" placeholder="Enter parameters here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Difficulty Level:</p>
+                <textarea type="integer" name="level" rows="4" cols="40" placeholder="Enter difficulty level here..."></textarea>
+              </div>
+              <div class="formElement">
+                <p>Points:</p>
+                <textarea type="integer" name="points" rows="4" cols="40" placeholder="Enter point value here..."></textarea>
+              </div>
+              <button type="submit" name="button">Add Algo</button>
+            </form>
+          </div>
+        </div>
+      {% else %}
+        <div class="error401"></div>
+      {% endif %}
+      {% else %}
+        <div class="error401"></div>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type ="text/javascript" src="../static/js/questionJQController.js"></script>
+  </body>
+</html>

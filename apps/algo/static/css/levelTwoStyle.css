@@ -1,0 +1,418 @@
+body{
+  background-color: black;
+  /*background-color: rgb(30, 9, 9);*/
+  font-family: 'Inconsolata' , sans-serif;
+  height: 800px;
+  /*outline: 1px dotted white;*/
+}
+
+
+/*******************************AlgoApp Level Two Begin*/
+
+.aa_mainPageSideBar{
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  /*outline: 1px solid yellow;*/
+  padding: 0px;
+  margin: 0px;
+  border-right: 9px solid rgb(10, 9, 9);
+  /*background: rgb(20, 15, 15);*/
+  /*background: linear-gradient (rgb(20, 10, 9),rgb(0, 0, 0));*/
+  /*background: linear-gradient (red, black);*/
+}
+
+.loginPageLink{
+  font-size: 21px;
+  text-decoration: none;
+  color:white;
+}
+
+.loginPageLink:hover{
+  text-decoration: none;
+  color:goldenrod;
+  border-bottom: 3px solid goldenrod;
+}
+
+.visitorAvatar{
+  width:100%;
+  height: 350px;
+  background-image: url(../images/aa_avatar_visitor_rs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  border-bottom: 5px dotted rgb(10, 9, 9);
+  /*outline: 1px solid white;*/
+}
+
+.memberAvatar{
+  width:100%;
+  height: 350px;
+  background-image: url(../images/aa_avatar_member_rs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  border-bottom: 5px dotted rgb(10, 9, 9);
+  /*outline: 1px solid white;*/
+}
+
+.adminAvatar{
+  width:100%;
+  height: 350px;
+  background-image: url(../images/aa_avatar_admin_rs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  border-bottom: 5px dotted rgb(10, 9, 9);
+  /*outline: 1px solid white;*/
+}
+
+.scoreTitle{
+  margin:0px;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.scoreValue{
+  color:orange;
+  margin:0px;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.challengerTitle{
+  margin:5px 0px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.level2Title{
+  margin:0px;
+  font-size: 75px;
+  font-weight: bold;
+  color:goldenrod;
+}
+
+.aa_logo{
+  width:100%;
+  height: 20%;
+  background-image: url(../images/aa_landing_6Brs.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border-bottom: 1px solid rgb(10, 9, 9);
+  /*outline: 1px solid white;*/
+}
+
+.navBar{
+  /*display: inline-block;*/
+  vertical-align: top;
+  width: 90%;
+  height: 20%;
+  /*outline: 1px solid green;*/
+}
+
+.navBar a{
+  text-decoration: none;
+  color:white;
+  font-size: 22px;
+}
+
+.navBar a:hover{
+  color:Darkviolet;
+  border-bottom: 4px solid Darkviolet;
+}
+
+.navLinks{
+  position: relative;
+  top: 85%;
+  left:42%;
+}
+
+.aa_questionContainer{
+  padding-top: 0%;
+  padding-left: 1%;
+  width: 75%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  color:white;
+  /*outline: 1px solid red;*/
+}
+
+/*********************************Question Element B*/
+
+.questionStatement{
+  width:90%;
+  padding-top: 4px;
+  background-color: black;
+  color: white;
+  /*margin: 0px auto;*/
+  font-size: 25px;
+  /*outline: 1px solid blue;*/
+}
+
+.questionTextContainer{
+  color: white;
+  font-size: 0px;
+  width: 100%;
+  height: 250px;
+  text-align: left;
+  padding-top: 30px;
+  padding-left:3px;
+  margin:0px;
+  /*outline: 1px solid lime;*/
+}
+
+.questionAttributeLabel{
+  color: white;
+}
+
+.questionText{
+  border-bottom: 2px solid white;
+  margin-top: 30px;
+  font-size: 18px;
+  width: 300px;
+  padding-left: 10px;
+  /*outline: 1px solid white;*/
+}
+.algoTitle{
+
+  margin: none;
+  font-size: 20px;
+  width: 50%;
+  padding-left: 10px;
+}
+
+.questionText:hover{
+  cursor: pointer;
+}
+
+.algo{
+  padding:0px;
+  margin:0px;
+  width: 36%;
+  display: inline-block;
+  vertical-align: top;
+  /*outline: 1px solid red;*/
+}
+
+.algoConsole{
+  /*border-left: 2px solid white;*/
+  position: relative;
+  left: 10%;
+  font-size: 0px;
+  margin-top: 30px;
+  width:50%;
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+  /*display: none;*/
+  /*outline: 1px solid pink;*/
+}
+
+.algoConsoleFeatures{
+  border-left: 2px solid white;
+}
+
+h2{
+  color: white;
+}
+
+.consoleButton{
+  font-size: 18px;
+  margin:0px;
+}
+
+.consoleButton:hover{
+  background-color: white
+  color: black;
+  border: none;
+}
+
+.answerInputField{
+  margin-left: 3px;
+  width:50%;
+  padding-left: 10px;
+  background-color: transparent;
+  border: none;
+  border-left: 2px solid white;
+  color:white;
+  /*outline: 1px solid white;*/
+}
+
+#answerSubmitButton{
+  margin-top: 10px;
+  display: block;
+  background: transparent;
+  border-radius: 40px;
+}
+
+#answerSubmitButton:hover{
+  color:black;
+  background-color: white;
+}
+
+.buttonName{
+  font-size: 18px;
+}
+
+.questionNfoButton{
+  margin:0px;
+  padding-left: 10px;
+  cursor: crosshair;
+  /*background-color: crimson;*/
+  color: grey;
+  /*display: none;*/
+  border-bottom: 3px solid grey;
+  /*border-top-right-radius: 30px;*/
+  /*border-top-left-radius: 30px;*/
+  /*margin: 0px auto;*/
+}
+
+.questionNfoButton:hover{
+  color: lightgray;
+  border-bottom: 3px solid lightgray;
+}
+
+.questionHintButton{
+  margin:0px;
+  padding-left: 10px;
+  cursor: crosshair;
+  /*background-color: crimson;*/
+  color: crimson;
+  /*display: none;*/
+  border-bottom: 3px solid crimson;
+  /*border-top-right-radius: 30px;*/
+  /*border-top-left-radius: 30px;*/
+  /*margin: 0px auto;*/
+}
+
+.questionHintButton:hover{
+  color: pink;
+  border-bottom: 3px solid pink;
+}
+
+.questionSolutionButtonOne{
+  padding-left: 10px;
+  cursor: pointer;
+  /*background-color: blue;*/
+  color: blue;
+  border-bottom: 3px solid blue;
+  /*margin: 0px auto;*/
+}
+
+.questionSolutionButtonOne:hover{
+  /*background-color: crimson;*/
+  color: powderblue;
+  border: none;
+  border-bottom: 3px solid powderblue;
+}
+
+.questionSolutionButtonTwo{
+  padding-left: 10px;
+  cursor: crosshair;
+  /*background-color: Darkblue;*/
+  color: orange;
+  border-bottom: 3px solid orange;
+  /*margin: 0px auto;*/
+}
+
+.questionSolutionButtonTwo:hover{
+  /*background-color: crimson;*/
+  color: yellow;
+  /*border: none;*/
+  border-bottom: 3px solid yellow;
+}
+
+.questionExplanationButton{
+  padding-left: 10px;
+  margin:0px;
+  cursor: pointer;
+  /*background-color: green;*/
+  color: green;
+  border-bottom: 3px solid green;
+  /*border-bottom-right-radius: 30px;*/
+  /*border-bottom-left-radius: 30px;*/
+  /*margin: 0px auto;*/
+}
+
+.questionExplanationButton:hover{
+  /*background-color: crimson;*/
+  color: lime;
+  border: none;
+  border-bottom: 3px solid lime;
+}
+
+.questionNfo{
+  margin:0px;
+  display:none;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.questionHint{
+  font-size: 18px;
+  padding-left: 10px;
+  height: 80px;
+  /*background-color: pink;*/
+  color: pink;
+  margin: 0px;
+  display: none;
+}
+
+.questionSolutionOne{
+  font-size: 18px;
+  padding-left: 10px;
+  height: 80px;
+  /*background-color: goldenrod;*/
+  color: powderblue;
+  margin: 0px;
+  display: none;
+}
+
+.questionSolutionTwo{
+  font-size: 18px;
+  padding-left: 10px;
+  height: 80px;
+  /*background-color: goldenrod;*/
+  color: yellow;
+  margin: 0px;
+  display: none;
+  /*outline: 3px solid yellow;*/
+}
+
+.questionExplanation{
+  font-size: 18px;
+  padding-left: 10px;
+  height: 80px;
+  /*background-color: goldenrod;*/
+  color: lime;
+  margin: 0px;
+  display: none;
+  /*border-bottom-right-radius: 30px;*/
+  /*border-bottom-left-radius: 30px;*/
+}
+
+.userInputSubmit{
+  width:152px;
+  margin:3px;
+  margin-bottom: 10px;
+  padding: 4px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+}
+
+.comingSoon{
+  width:100%;
+  height: 550px;
+  background-image: url(../images/aa_coming_soon-shining.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  /*border-bottom: 5px dotted rgb(10, 9, 9);*/
+  /*outline: 1px solid white;*/
+}

@@ -1,0 +1,7 @@
+.parallax_viewport {
+    position: relative;     /* relative, absolute, fixed */
+    overflow: hidden;
+}
+.parallax_layer {
+    position: absolute;
+}
